@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label color="primary" stacked>Encuentre su evento</ion-label>
+    <ion-input [(ngModel)]="searchText"  placeholder="Buscar"></ion-input>
+  </ion-item>
+  <ion-card *ngFor="let even of eventos | filter : searchText" (click)="eventDetail(even)">
+    <img src="{{even.Banner_Evento}}"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{even.Nombre_Evento}}
+        </ion-card-title>
+      <p>
+        {{even.Descripcion_Evento}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
